@@ -1,5 +1,3 @@
-Sure, here's a suitable title for your GitHub repository:
-
 **"Selenium Web Scraper: Automated Data Extraction and Filtering with CSV Export"**
 
 And here is a sample README.md file to get you started:
