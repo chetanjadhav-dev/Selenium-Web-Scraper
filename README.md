@@ -1,7 +1,3 @@
-**"Selenium Web Scraper: Automated Data Extraction and Filtering with CSV Export"**
-
-And here is a sample README.md file to get you started:
-
 ```markdown
 # Selenium Web Scraper: Automated Data Extraction and Filtering with CSV Export
 
