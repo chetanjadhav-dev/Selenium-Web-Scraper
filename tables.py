@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
-import csv
 
 website = "https://yokohama-atg.com/usa/tire-selector-yokohama-off-highway-tires/"
 path = "C:\\Users\\cheta\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"  # Change according to your PC's file path
@@ -13,133 +12,101 @@ service = Service(executable_path=path)
 driver = webdriver.Chrome(service=service)
 
 my_designs = ['350']
-
 folder = 'Alliance'
 
 if not os.path.exists(folder):
     os.mkdir(folder)
 
+def wait_and_click(driver, by, value, timeout=10):
+    try:
+        element = WebDriverWait(driver, timeout).until(
+            EC.element_to_be_clickable((by, value))
+        )
+        element.click()
+    except Exception as e:
+        print(f"Element not found or could not be clicked: {str(e)}")
+
+def get_select_elements(driver, by, value, timeout=10):
+    try:
+        elements = WebDriverWait(driver, timeout).until(
+            EC.presence_of_all_elements_located((by, value))
+        )
+        return elements
+    except Exception as e:
+        print(f"Elements not found: {str(e)}")
+        return []
+
+def get_designs(designs_list, available_designs):
+    selected_designs = []
+    for design in available_designs:
+        if design.text in designs_list:
+            selected_designs.append(design)
+    return selected_designs
+
+def collect_table_headers(tables):
+    table_data = []
+    for i, table in enumerate(tables):
+        header_rows = table.find_element(By.TAG_NAME, 'thead').find_elements(By.TAG_NAME, 'tr')
+        headers_dict = {index: row.find_elements(By.TAG_NAME, 'th') for index, row in enumerate(header_rows) if index != 3}
+        headers_text = {
+            index: {i: th.text for i, th in enumerate(th_list)}
+            for index, th_list in headers_dict.items()
+        }
+        table_data.append({f"Table_{i+1}": headers_text})
+    return table_data
+
+def collect_data(driver, div_class):
+    try:
+        data_div = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, f'//div[@class="{div_class} "]'))
+        )
+        tables = data_div.find_elements(By.XPATH, './/table[@id="tblResultView"]')
+        if div_class == 'data_in_inch':
+            driver.execute_script("arguments[0].style.display = 'block';", data_div)
+        return collect_table_headers(tables)
+    except Exception as e:
+        print(f"An error occurred while fetching tables: {str(e)}")
+        return []
+
 try:
     driver.get(website)
 
-    # Wait for the cookie accept button and click it
-    try:
-        accept_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//span[@data-cookie-set="accept"]'))
-        )
-        accept_button.click()
-    except Exception as e:
-        print(f"Cookie notice not found or could not be clicked: {str(e)}")
+    # Accept cookies
+    wait_and_click(driver, By.XPATH, '//span[@data-cookie-set="accept"]')
 
-    print('working...')
-    
-    # Click on the brand select button
-    select_buttons = WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.XPATH, '//span[@class="select2-arrow"]'))
-    )
+    # Select brand
+    select_buttons = get_select_elements(driver, By.XPATH, '//span[@class="select2-arrow"]')
     brands_button = select_buttons[2]
     brands_button.click()
-
-    # Select the brand
-    select_brands = WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]'))
-    )
-    select_brands[0].click()
+    brands = get_select_elements(driver, By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]')
+    brands[0].click()
 
     # Wait for the loader to disappear
-    WebDriverWait(driver, 10).until(
-        EC.invisibility_of_element((By.XPATH, '//div[@class="loader-wrapper"]'))
-    )
+    WebDriverWait(driver, 10).until(EC.invisibility_of_element((By.XPATH, '//div[@class="loader-wrapper"]')))
 
-    # Click on the design select button
-    select_buttons = WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.XPATH, '//span[@class="select2-arrow"]'))
-    )
+    # Select design
     design_button = select_buttons[3]
     design_button.click()
+    available_designs = get_select_elements(driver, By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]')
+    selected_designs = get_designs(my_designs, available_designs)
+    if selected_designs:
+        selected_designs[0].click()
 
-    select_design = WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]'))
-    )
+    # Click search button
+    wait_and_click(driver, By.XPATH, '//a[@title="Search"]')
 
-    def get_design(values):
-        new_design = []
-
-        if isinstance(values, str):
-            values = [values]
-
-        for des in select_design:
-            if des.text in values:
-                new_design.append(des)
-        return new_design
-
-    designs = get_design(my_designs)
-    for design in designs:
-        print(f'For Design: {design.text}')
-        design.click()
-
-        # Click the search button
-        search_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//a[@title="Search"]'))
-        )
-        search_button.click()
-        print('Search...')
-
-        # Wait for tables to become visible
-        try:
-            # Find the parent div element containing the tables you're interested in
-            data_in_mm = WebDriverWait(driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, '//div[@class="data_in_mm "]'))
-            )
-
-            # Find all tables within the parent div
-            tables_mm = data_in_mm.find_elements(By.XPATH, './/table[@id="tblResultView"]')
-
-            for i, table in enumerate(tables_mm):
-                # Extract header row
-                header_row = table.find_element(By.TAG_NAME, 'thead').find_elements(By.TAG_NAME, 'tr')
-                speeds = header_row[-1].find_elements(By.TAG_NAME, 'th')
-                print(f'Table {i+1}:\n\n', 'tr 1:\n\n',header_row[0].text, '\n\ntr 2:\n\n', header_row[1].text, '\n\ntr 3:\n\n', header_row[2].text, '\n\ntr 4:\n\n', [speed.text for speed in speeds])
-                print()
-                print('end...')
-                print()
-
-            # Print tables for demonstration
-            if len(tables_mm) > 1:
-                for i, table in enumerate(tables_mm):
-                    table_html = table.text
-                    print()
-                    print(f'Table {i+1} for "International Standard (mm - bar - kg - kmph)":\n\n', table_html)
-                    print()
-            else:
-                print('Tables not found!!!')
-
-            data_in_inch = WebDriverWait(driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, '//div[@class="data_in_inch "]'))
-            )
-
-            # Find all table elements within the parent div
-            tables_inch = data_in_inch.find_elements(By.XPATH, './/table[@id="tblResultView"]')
-
-            # Execute JavaScript to change the display style to block (making it visible)
-            driver.execute_script("arguments[0].style.display = 'block';", data_in_inch)
-
-            # Print the HTML content of each table for demonstration
-            if len(tables_inch) > 1:
-                for i, table in enumerate(tables_inch):
-                    table_html = table.text
-                    print()
-                    print(f'Table {i+1} for "US Standard (inch - psi - lbs - mph)"):\n\n', table_html)
-                    print()
-            else:
-                print('tables not found!!!')
-
-        except Exception as e:
-            print(f"An error occurred while fetching tables 'tblResultView': {str(e)}")
-
-
+    # Collect table headers
+    headers = {
+        "Tables_in_mm": collect_data(driver, "data_in_mm"),
+        "Tables_in_inch": collect_data(driver, "data_in_inch")
+    }
+    print('*'*55)
+    print()
+    print("Headers Collected:", list(headers.keys()))
+    print()
+    print('*'*55)
 
 finally:
-    time.sleep(10)
+    time.sleep(5)
     driver.quit()
     print("All data has been collected and the browser is closed.")
