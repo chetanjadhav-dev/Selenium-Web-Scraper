@@ -83,6 +83,114 @@ def collect_table_info(driver, div_class):
     except Exception as e:
         print(f"An error occurred while fetching tables: {str(e)}")
         return {}
+    
+
+def collect_filtered_data(driver, div_class):
+    """
+    Collect filtered data from tables based on the specified div class.
+    """
+    try:
+        data_div = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, f'//div[@class="{div_class} "]'))
+        )
+        tables = data_div.find_elements(By.XPATH, './/table[@id="tblResultView"]')
+        if div_class == 'data_in_inch':
+            driver.execute_script("arguments[0].style.display = 'block';", data_div)
+        
+        table_data = []
+        
+        xpath_expression = f'//tbody/tr[./td[@style="color:#a30e13 !important"]]'
+        table_unit = {'data_in_mm': 'tables_mm', 'data_in_inch': 'tables_inch'}
+
+        if table_unit[div_class] == 'tables_mm':
+
+            table_info = {}
+
+            for i, table in enumerate(tables):
+
+                header_rows = table.find_element(By.TAG_NAME, 'thead').find_elements(By.TAG_NAME, 'tr')
+                headers_dict = {index: row.find_elements(By.TAG_NAME, 'th') for index, row in enumerate(header_rows) if index != 3}
+                headers_text = {
+                    index: {i: th.text for i, th in enumerate(th_list)}
+                    for index, th_list in headers_dict.items()
+                }
+
+                table_data_in_mm = table.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'tr')
+
+                data_rows = [{i: td.text for i, td in enumerate(table_data_in_mm[0].find_elements(By.TAG_NAME, 'td'))}]
+                data_row = {k: data_rows[0][k] for k in range(7)}
+
+                filtered_data = {}
+                for index, tr in enumerate(table_data_in_mm):
+                    filter_list = tr.find_elements(By.XPATH, xpath_expression)
+                    for idx, ftr in enumerate(filter_list):
+                        filtered_data[idx] = ftr.text
+
+                data = filtered_data[i]
+                table_data.append({0: data})
+                
+                print(f'Table_{i+1} Data Collected')
+
+                processed_data = [
+                    {
+                        i: {j: txt for j, txt in enumerate(td.split(' '))}
+                        for i, td in table.items()
+                    }
+                    for table in table_data
+                ]
+
+                table_info[f"Table_{i+1}"] = {
+                    "headers": headers_text,
+                    "data": [data_row, processed_data[i]]
+                }
+
+            return table_info
+
+        else:
+            table_info = {}
+
+            for i, table in enumerate(tables):
+
+                header_rows = table.find_element(By.TAG_NAME, 'thead').find_elements(By.TAG_NAME, 'tr')
+                headers_dict = {index: row.find_elements(By.TAG_NAME, 'th') for index, row in enumerate(header_rows) if index != 3}
+                headers_text = {
+                    index: {i: th.text for i, th in enumerate(th_list)}
+                    for index, th_list in headers_dict.items()
+                }
+
+                table_data_in_inch = table.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'tr')
+                data_rows = [{i: td.text for i, td in enumerate(table_data_in_inch[0].find_elements(By.TAG_NAME, 'td'))}]
+                data_row = {k: data_rows[0][k] for k in range(7)}
+
+                filtered_data = {}
+                for index, tr in enumerate(table_data_in_inch, start=2):
+                    filter_list = tr.find_elements(By.XPATH, xpath_expression)
+                    for idx, ftr in enumerate(filter_list):
+                        filtered_data[idx] = ftr.text
+
+                data = filtered_data[i+2]
+                table_data.append({0: data})
+
+                print(f'Table_{i+1} Data Collected')
+
+                processed_data = [
+                    {
+                        i: {j: txt for j, txt in enumerate(td.split(' '))}
+                        for i, td in table.items()
+                    }
+                    for table in table_data
+                ]
+
+                table_info[f"Table_{i+1}"] = {
+                    "headers": headers_text,
+                    "data": [data_row, processed_data[i]]
+                }
+        
+        return table_info
+    
+    except Exception as e:
+        print(f"An error occurred while fetching tables: {str(e)}")
+        return []
 
 def extract_headers(table):
     """
@@ -119,31 +227,54 @@ def create_dataframe(headers, sample_data):
     return pd.DataFrame(sample_data, columns=columns)
 
 def process_table(table_info, table_key):
-    columns = table_info[table_key]['headers']
-    table_data = table_info[table_key]['data']
+    try:
+        columns = table_info[table_key]['headers']
+        table_data = table_info[table_key]['data']
 
-    dr1 = [text.replace('\n', ' ') for text in list(table_data[0].values())]
-    data_rows = [dr1]
+        dr1 = [text.replace('\n', ' ') for text in list(table_data[0].values())]
 
-    for i, dr in enumerate(table_data[1:], start=2):
-        drs = globals()[f'dr{i}'] = [''] * 7 + list(dr.values())
-        data_rows.append(drs)
+        if len(dr1) <= 7:
+            max_key = max(table_data[0])
+            combined_dict = table_data[0].copy()
 
-    return create_dataframe(columns, data_rows)
+            for k,v in table_data[1][0].items():
+                combined_dict[max_key + 1 + k] = v
 
-def save_to_csv(df, filename):
+            combined_data = list(combined_dict.values())
+
+            data_rows = [combined_data]
+
+            return create_dataframe(columns, data_rows)
+        
+        else:
+            data_rows = [dr1]
+
+        for i, dr in enumerate(table_data[1:], start=2):
+            drs = globals()[f'dr{i}'] = [''] * 7 + list(dr.values())
+            data_rows.append(drs)
+
+        return create_dataframe(columns, data_rows)
+    except Exception as e:
+        print(f"An error occurred while fetching tables: {str(e)}")
+        return []
+
+def save_to_csv(df, folder, filename):
     """
     Saves the DataFrame to a CSV file.
     """
-    df.to_csv(filename, index=False)
-    print(f"CSV file '{filename}' saved successfully.")
+    try:
+        df.to_csv(os.path.join(folder,filename), index=False)
+        print(f"CSV file '{filename}' saved successfully.")
+    except Exception as e:
+        print(f"No Important rows found!!!")
 
 def main():
     # Configuration
     website = "https://yokohama-atg.com/usa/tire-selector-yokohama-off-highway-tires/"
     driver_path = "C:\\Users\\cheta\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"  # Change according to your PC's file path
-    my_designs = ['350']
-    folder = 'Alliance'
+    # my_designs = '350'
+    my_designs = input("Enter the design: ")
+    folder = f'Alliance/{my_designs}'
 
     if not os.path.exists(folder):
         os.mkdir(folder)
@@ -170,30 +301,41 @@ def main():
         design_button = select_buttons[3]
         design_button.click()
         available_designs = get_select_elements(driver, By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]')
-        selected_designs = get_designs(my_designs, available_designs)
+        selected_designs = get_designs([my_designs], available_designs)
         if selected_designs:
             selected_designs[0].click()
 
-        # Click search button
         wait_and_click(driver, By.XPATH, '//a[@title="Search"]')
 
-        # Collect data for both mm and inch tables
-        international_table_info = collect_table_info(driver, "data_in_mm")
-        usa_table_info = collect_table_info(driver, "data_in_inch")
+        international_data = collect_table_info(driver, "data_in_mm")
+        usa_data = collect_table_info(driver, "data_in_inch")
 
-        # Process and save international tables
-        table1_mm = process_table(international_table_info, 'Table_1')
-        save_to_csv(table1_mm, os.path.join(folder, 'table1_mm.csv'))
+        international_filtered_data = collect_filtered_data(driver, "data_in_mm")
+        usa_filtered_data = collect_filtered_data(driver, "data_in_inch")
 
-        table2_mm = process_table(international_table_info, 'Table_2')
-        save_to_csv(table2_mm, os.path.join(folder, 'table2_mm.csv'))
+        inter_table1 = process_table(international_data, 'Table_1')
+        save_to_csv(inter_table1, folder, 'inter_table1.csv')
 
-        # Process and save USA tables
-        table1_inch = process_table(usa_table_info, 'Table_1')
-        save_to_csv(table1_inch, os.path.join(folder, 'table1_inch.csv'))
+        inter_table2 = process_table(international_data, 'Table_2')
+        save_to_csv(inter_table2, folder, 'inter_table2.csv')
 
-        table2_inch = process_table(usa_table_info, 'Table_2')
-        save_to_csv(table2_inch, os.path.join(folder, 'table2_inch.csv'))
+        usa_table1 = process_table(usa_data, 'Table_1')
+        save_to_csv(usa_table1, folder, 'usa_table1.csv')
+
+        usa_table2 = process_table(usa_data, 'Table_2')
+        save_to_csv(usa_table2, folder, 'usa_table2.csv')
+
+        inter_table1_filtered = process_table(international_filtered_data, 'Table_1')
+        save_to_csv(inter_table1_filtered, folder, 'inter_table1_filtered.csv')
+
+        inter_table2_filtered  = process_table(international_filtered_data, 'Table_2')
+        save_to_csv(inter_table2_filtered, folder, 'inter_table2_filtered.csv')
+
+        usa_table1_filtered  = process_table(usa_filtered_data, 'Table_1')
+        save_to_csv(usa_table1_filtered, folder, 'usa_table1_filtered.csv')
+
+        usa_table2_filtered  = process_table(usa_filtered_data, 'Table_2')
+        save_to_csv(usa_table2_filtered, folder, 'usa_table2_filtered.csv')
 
     finally:
         time.sleep(5)
