@@ -249,9 +249,12 @@ def process_table(table_info, table_key):
         else:
             data_rows = [dr1]
 
-        for i, dr in enumerate(table_data[1:], start=2):
-            drs = globals()[f'dr{i}'] = [''] * 7 + list(dr.values())
-            data_rows.append(drs)
+            max_length = max(len(list(dr.values())) for dr in table_data)
+
+            for i, dr in enumerate(table_data[1:], start=2):
+                padding_length = max_length - len(list(dr.values()))
+                drs = [''] * padding_length + list(dr.values())
+                data_rows.append(drs)
 
         return create_dataframe(columns, data_rows)
     except Exception as e:

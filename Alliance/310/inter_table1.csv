@@ -1,0 +1,18 @@
+Size,Rim,Unloaded Dimension,Unloaded Dimension,Loaded Static radius mm,Rolling Circumference mm,Load Index PR Symbols,Inflation Pressure bar,Recommended Load,Recommended Load,Recommended Load,Recommended Load
+,,,,,,,,Speed,Speed,Speed,Speed
+,,,,,,,,Off-the road,Off-the road,Off-the road,Off-the road
+,,SW mm,OD mm,,,,,Static kmph,5 kmph,10 kmph,25 kmph
+16.00-24 L-3,11.25,432,1493,685,4450,16PR 181A2,3.5,11780,8320,7360,6260
+,,,,,,,3.75,12270,8670,7670,6520
+,,,,,,,4,12740,8990,7960,6770
+,,,,,,,4.25,13200,9320,8250,7010
+,,,,,,"20PR
+187A2",4.5,13870,9800,8670,7370
+,,,,,,,4.75,14320,10110,8950,7610
+,,,,,,,5,14750,10420,9220,7840
+,,,,,,,5.5,15600,11020,9750,8290
+,,,,,,"24PR
+190A2",5.75,15790,11150,9870,8390
+,,,,,,,6,16190,11440,10120,8600
+,,,,,,,6.25,16580,11710,10360,8810
+,,,,,,,6.5,16960,11980,10600,9010
