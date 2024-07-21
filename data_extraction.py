@@ -208,11 +208,20 @@ def create_multi_index(row1, row2, row3, row4):
     Creates a multi-level index for DataFrame columns based on the headers.
     """
     tuples = []
+
     for col in row1:
         if col == 'Unloaded Dimension':
-            tuples.extend([(col, '', '', row4[0]), (col, '', '', row4[1])])
+            if row4:
+                tuples.extend([(col, '', '', row4[0]), (col, '', '', row4[1])])
+            else:
+                tuples.append((col, '', '', ''))
         elif col == 'Recommended Load':
-            tuples.extend([(col, row2[0], row3[0], subcol) for subcol in row4[2:]])
+            if row2 and row3 and row4:
+                tuples.extend([(col, row2[0], row3[0], subcol) for subcol in row4[2:]])
+            elif row2 and row4:
+                tuples.extend([(col, row2[0], '', subcol) for subcol in row4[2:]])
+            elif row4:
+                tuples.extend([(col, '', '', subcol) for subcol in row4[2:]])
         else:
             tuples.append((col, '', '', ''))
     
@@ -277,10 +286,14 @@ def main():
     driver_path = "C:\\Users\\cheta\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"  # Change according to your PC's file path
     # my_designs = '350'
     my_designs = input("Enter the design: ")
-    folder = f'Alliance/{my_designs}'
+    folder = 'Alliance'
 
     if not os.path.exists(folder):
-        os.mkdir(folder)
+        os.mkdir(folder) 
+
+    subfolder_path = os.path.join(folder, my_designs)
+    if not os.path.exists(subfolder_path):
+        os.mkdir(subfolder_path)
 
     try:
         # Initialize WebDriver
