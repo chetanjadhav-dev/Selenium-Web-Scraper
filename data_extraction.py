@@ -142,7 +142,11 @@ def main():
     # Configuration
     website = "https://yokohama-atg.com/usa/tire-selector-yokohama-off-highway-tires/"
     driver_path = "C:\\Users\\cheta\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"  # Change according to your PC's file path
-    my_designs = ['350']
+    # my_designs = ['350']
+    my_designs = input('Enter the design values: ')
+    brands = input('Enter brand name: ')
+
+    brands = {'Alliance': 2}
     folder = 'Alliance'
 
     if not os.path.exists(folder):
