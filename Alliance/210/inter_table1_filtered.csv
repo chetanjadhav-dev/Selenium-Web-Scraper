@@ -1,0 +1,6 @@
+Size,Rim,Unloaded Dimension,Unloaded Dimension,Loaded Static radius mm,Rolling Circumference mm,Load Index PR Symbols,Inflation Pressure bar,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load
+,,,,,,,,Speed,Speed,Speed,Speed,Speed,Speed,Speed,Speed
+,,,,,,,,,,,,,,,
+,,SW mm,OD mm,,,,,15 kmph,20 kmph,30 kmph,40 kmph,50 kmph,60 kmph,70 kmph,80 kmph
+11.00-24,8 8.00V 8.0V5° 8.5 8.50V 8.5V5°,293,1206,567,3355,"12PR
+147F",5.2,4500,4090,3410,3130,3050,3000,2860,2725

@@ -1,0 +1,18 @@
+Size,Rim,Unloaded Dimension,Unloaded Dimension,Loaded Static radius mm,Rolling Circumference mm,Load Index PR Symbols,Inflation Pressure bar,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load,Recommended Load
+,,,,,,,,Speed,Speed,Speed,Speed,Speed,Speed,Speed,Speed
+,,,,,,,,,,,,,,,
+,,SW mm,OD mm,,,,,15 kmph,20 kmph,30 kmph,40 kmph,50 kmph,60 kmph,70 kmph,80 kmph
+11.00-24,8 8.00V 8.0V5° 8.5 8.50V 8.5V5°,293,1206,567,3355,12PR 147F,4.7,4240,3860,3210,2960,2880,2830,2700,2570
+,,,,,,,5.2,4500,4090,3410,3130,3050,3000,2860,2725
+,,,,,,,5.6,4920,4470,3730,3430,3340,3280,3130,2980
+,,,,,,,5.9,5070,4610,3840,3540,3440,3380,3230,3075
+,,,,,,"14PR
+151F",5.7,4720,4290,3580,3290,3200,3150,3000,2860
+,,,,,,,6.2,4950,4500,3750,3450,3360,3300,3150,3000
+,,,,,,,6.6,5540,5040,4200,3860,3760,3700,3530,3360
+,,,,,,,6.9,5690,5180,4310,3970,3860,3800,3620,3450
+,,,,,,"16PR
+154F",6.7,5150,4680,3900,3590,3490,3430,3280,3120
+,,,,,,,7.2,5360,4880,4060,3740,3640,3580,3410,3250
+,,,,,,,7.6,6060,5510,4590,4220,4110,4040,3850,3670
+,,,,,,,7.9,6190,5630,4690,4310,4200,4130,3940,3750
