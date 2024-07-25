@@ -143,11 +143,12 @@ def main():
     website = "https://yokohama-atg.com/usa/tire-selector-yokohama-off-highway-tires/"
     driver_path = "C:\\Users\\cheta\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"  # Change according to your PC's file path
     # my_designs = ['350']
+    my_brands = input('Enter brand name: ').upper()
     my_designs = input('Enter the design values: ')
-    brands = input('Enter brand name: ')
 
-    brands = {'Alliance': 2}
-    folder = 'Alliance'
+    brands_names = {'ALLIANCE': 0, 'GALAXY': 1, 'PRIMEX': 2}
+    brand = brands_names[my_brands]
+    folder = my_brands.capitalize()
 
     if not os.path.exists(folder):
         os.mkdir(folder)
@@ -165,7 +166,7 @@ def main():
         brands_button = select_buttons[2]
         brands_button.click()
         brands = get_select_elements(driver, By.XPATH, '//li[@class="select2-results-dept-0 select2-result select2-result-selectable"]')
-        brands[0].click()
+        brands[brand].click()
 
         # Wait for the loader to disappear
         WebDriverWait(driver, 10).until(EC.invisibility_of_element((By.XPATH, '//div[@class="loader-wrapper"]')))
