@@ -17,7 +17,7 @@ The scraper navigates through the Yokohama Off-Highway Tires website, selects sp
 
 1. **Python 3.x**
 2. **Selenium Library**: Install using `pip install selenium`.
-3. **ChromeDriver**: Ensure ChromeDriver matches your Chrome version. Update `driver_path` in the `main()` function to the ChromeDriver path on your local machine.
+3. **ChromeDriver**: Ensure ChromeDriver matches your Chrome version. Download ChromeDriver from [here](https://storage.googleapis.com/chrome-for-testing-public/130.0.6723.116/win64/chromedriver-win64.zip) and update `driver_path` in the `main()` function to the ChromeDriver path on your local machine.
 
 ## Installation
 
@@ -55,9 +55,9 @@ The scraper navigates through the Yokohama Off-Highway Tires website, selects sp
 
 ```plaintext
 Selenium-Web-Scraper/
-├── data_extraction.py          # Main script to run the scraper
-├── README.md           # Project overview and instructions
-└── requirements.txt    # Required libraries
+├── data_extraction.py   # Main script to run the scraper
+├── README.md            # Project overview and instructions
+└── requirements.txt     # Required libraries
 ```
 
 ## Customization
@@ -73,4 +73,4 @@ Feel free to fork the repository and submit pull requests to enhance functionali
 This project is open-source and available under the MIT License.
 ```
 
-This format ensures consistency across all sections for a clean, professional look.
+This includes the link to download ChromeDriver, keeping the document well-structured.
