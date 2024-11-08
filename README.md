@@ -21,7 +21,7 @@ This project utilizes Selenium to automate the process of web data extraction, f
 
 1. Clone the repository:
    ```sh
-   git clone [https://github.com/your-username/selenium-web-scraper.git](https://github.com/chetanjadhav-dev/Selenium-Web-Scraper/tree/app)
+   git clone https://github.com/chetanjadhav-dev/Selenium-Web-Scraper.git
 2. Navigate to the project directory:
    ```sh
    cd selenium-web-scraper
