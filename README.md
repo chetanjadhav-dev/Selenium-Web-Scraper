@@ -24,3 +24,53 @@ The scraper navigates through the Yokohama Off-Highway Tires website, selects sp
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/chetanjadhav-dev/Selenium-Web-Scraper.git
+   ```
+2. **Navigate to the repository**:
+   ```bash
+   cd Selenium-Web-Scraper
+   ```
+3. **Install the required packages**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+1. **Run the script**:
+   ```bash
+   python scraper.py
+   ```
+2. **Input Brand and Design**:
+   - Enter the desired brand name (e.g., `ALLIANCE`, `GALAXY`, `PRIMEX`).
+   - Enter the tire design (e.g., `350`).
+
+3. **Output**:
+   - Extracted data is stored in CSV files within folders named by brand.
+
+## Error Handling
+
+- If the ChromeDriver is not available, or if there are issues finding elements on the page, the script will print an error message with details on what went wrong.
+
+## Project Structure
+
+```plaintext
+Selenium-Web-Scraper/
+├── scraper.py          # Main script to run the scraper
+├── README.md           # Project overview and instructions
+└── requirements.txt    # Required libraries
+```
+
+## Customization
+
+You can modify the `main()` function to customize the scraping process or adapt it for additional websites.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests to enhance functionality or improve performance.
+
+## License
+
+This project is open-source and available under the MIT License.
+```
+
+This format ensures consistency across all sections for a clean, professional look.
