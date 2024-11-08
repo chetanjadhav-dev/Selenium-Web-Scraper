@@ -38,7 +38,7 @@ The scraper navigates through the Yokohama Off-Highway Tires website, selects sp
 
 1. **Run the script**:
    ```bash
-   python scraper.py
+   python data_extraction.py
    ```
 2. **Input Brand and Design**:
    - Enter the desired brand name (e.g., `ALLIANCE`, `GALAXY`, `PRIMEX`).
@@ -55,7 +55,7 @@ The scraper navigates through the Yokohama Off-Highway Tires website, selects sp
 
 ```plaintext
 Selenium-Web-Scraper/
-├── scraper.py          # Main script to run the scraper
+├── data_extraction.py          # Main script to run the scraper
 ├── README.md           # Project overview and instructions
 └── requirements.txt    # Required libraries
 ```
