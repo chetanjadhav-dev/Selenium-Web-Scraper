@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>git.samba.org - rsync.git/atom log</title>
+<subtitle>The rsync repository.</subtitle>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=summary" />
+<link rel="self" type="application/atom+xml" href="http://git.samba.org/?p=rsync.git;a=atom" />
+<id>http://git.samba.org/?p=rsync.git</id>
+<author><name>Wayne Davison</name></author>
+<icon>//www.samba.org/samba/style/2010/grey/favicon.ico</icon>
+<logo>//www.samba.org/samba/style/2010/samba_2010_logo_transparent_151x27.png</logo>
+<updated>2024-10-30T06:06:34Z</updated>
+<generator version='2.34.1/2.34.1'>gitweb</generator>
+<entry>
+<title type="html">Some checksum buffer fixes.</title>
+<updated>2024-10-30T05:55:29Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-10-30T05:55:29Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=0902b52f6687b1f7952422080d50b93108742e53" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=0902b52f6687b1f7952422080d50b93108742e53</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Some checksum buffer fixes.
+
+- Put sum2_array into sum_struct to hold an array of sum2 checksums
+  that are each xfer_sum_len bytes.
+- Remove sum2 buf from sum_buf.
+- Add macro sum2_at() to access each sum2 array element.
+- Throw an error if a sums header has an s2length larger than
+  xfer_sum_len.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=io.c;fp=io.c;h=bb60eecaba4d922e276ba5eb096e535c53e73e35;hp=a99ac0ec5e4d35ff6bc64af616ae5c264d73838e;hb=0902b52f6687b1f7952422080d50b93108742e53;hpb=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=io.c;h=0902b52f6687b1f7952422080d50b93108742e53" title="history">H</a>] io.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=match.c;fp=match.c;h=36e78ed2b3c2b058d514964a74737b368b8668c3;hp=cdb30a15e82fe6fc0671d7e7b58eeca97137770f;hb=0902b52f6687b1f7952422080d50b93108742e53;hpb=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=match.c;h=0902b52f6687b1f7952422080d50b93108742e53" title="history">H</a>] match.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=rsync.c;fp=rsync.c;h=b130aba56fb63e093e7508284b26d9dfc23a969f;hp=cd288f57d430b3f1b8620310b271a0e2244ac687;hb=0902b52f6687b1f7952422080d50b93108742e53;hpb=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=rsync.c;h=0902b52f6687b1f7952422080d50b93108742e53" title="history">H</a>] rsync.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=rsync.h;fp=rsync.h;h=8ddbe702e82b73b35dd6ded1b5184f8a2c7276de;hp=d3709fe0f4020a870bddb47ded06cc3c7a6c2ab9;hb=0902b52f6687b1f7952422080d50b93108742e53;hpb=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=rsync.h;h=0902b52f6687b1f7952422080d50b93108742e53" title="history">H</a>] rsync.h</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=sender.c;fp=sender.c;h=ab20534166ed3822d5b7fe07f0116a86ee390917;hp=3d4f052e9bdbeaf7e41a39315907bddcbe69ed15;hb=0902b52f6687b1f7952422080d50b93108742e53;hpb=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=sender.c;h=0902b52f6687b1f7952422080d50b93108742e53" title="history">H</a>] sender.c</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">added apple silicon path details</title>
+<updated>2024-04-19T07:54:13Z</updated>
+<author>
+  <name>vincent sgherzi</name>
+  <email>sgherzivincent@gmail.com</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-19T07:54:13Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=9615a2492bbf96bc145e738ebff55bbb91e0bbee" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=9615a2492bbf96bc145e738ebff55bbb91e0bbee</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+added apple silicon path details
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=INSTALL.md;fp=INSTALL.md;h=19d39054592ee617231062eea7bfbc64e99ce723;hp=8ef574a543cd62da8b2c699e1c08caf8824cb68f;hb=9615a2492bbf96bc145e738ebff55bbb91e0bbee;hpb=4592aa770d51d5e83845b032feea1de441f03ee7" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=INSTALL.md;h=9615a2492bbf96bc145e738ebff55bbb91e0bbee" title="history">H</a>] INSTALL.md</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">More tweaks for Actions.</title>
+<updated>2024-04-10T20:12:52Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T20:12:52Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=4592aa770d51d5e83845b032feea1de441f03ee7" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=4592aa770d51d5e83845b032feea1de441f03ee7</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+More tweaks for Actions.
+
+- When a .github/workflows/*.yml file changes, skip running unaffected
+  builds.
+- We need git to be installed for git-version.h generation.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/cygwin-build.yml;fp=.github/workflows/cygwin-build.yml;h=c6afb118b65407bd52f95cfb5ca6d8bcf4fc9f9c;hp=a9635f2edd1dad2a4fd79140b3bf945845d728b9;hb=4592aa770d51d5e83845b032feea1de441f03ee7;hpb=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/cygwin-build.yml;h=4592aa770d51d5e83845b032feea1de441f03ee7" title="history">H</a>] .github/workflows/cygwin-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=1ac22388ab548738d1341d378b228a193ce40763;hp=d82b160b6d08f84c7a190a5909231f776c115bb9;hb=4592aa770d51d5e83845b032feea1de441f03ee7;hpb=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=4592aa770d51d5e83845b032feea1de441f03ee7" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/macos-build.yml;fp=.github/workflows/macos-build.yml;h=5471bf534b06c0f071f44bd9d8aa09c17f8beb0b;hp=bb85bb0040108c22063ef82d21740d85fbce2db3;hb=4592aa770d51d5e83845b032feea1de441f03ee7;hpb=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/macos-build.yml;h=4592aa770d51d5e83845b032feea1de441f03ee7" title="history">H</a>] .github/workflows/macos-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/solaris-build.yml;fp=.github/workflows/solaris-build.yml;h=231fbd4a782c5d26e8a8201f173d6a81e26c526c;hp=557a5781e0e289a57547fff2076e4fe78fe2acfa;hb=4592aa770d51d5e83845b032feea1de441f03ee7;hpb=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/solaris-build.yml;h=4592aa770d51d5e83845b032feea1de441f03ee7" title="history">H</a>] .github/workflows/solaris-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/ubuntu-build.yml;fp=.github/workflows/ubuntu-build.yml;h=1db9a48292e70d401a07759ac157708961d7cda6;hp=60dc8d5f2d384f3b5735e7d05df8354c25d1b20d;hb=4592aa770d51d5e83845b032feea1de441f03ee7;hpb=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/ubuntu-build.yml;h=4592aa770d51d5e83845b032feea1de441f03ee7" title="history">H</a>] .github/workflows/ubuntu-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Separate the builds and make Cygwin always run.</title>
+<updated>2024-04-10T20:02:34Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T20:02:34Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Separate the builds and make Cygwin always run.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/build.yml;fp=.github/workflows/build.yml;h=0000000000000000000000000000000000000000;hp=f407dab7b273aa4052dfad6bd8e9257a9e11d646;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/cygwin-build.yml;fp=.github/workflows/cygwin-build.yml;h=a9635f2edd1dad2a4fd79140b3bf945845d728b9;hp=0000000000000000000000000000000000000000;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/cygwin-build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/cygwin-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=d82b160b6d08f84c7a190a5909231f776c115bb9;hp=2081f6229b930d3f78b5fccc295cfb0e1b770d0d;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/macos-build.yml;fp=.github/workflows/macos-build.yml;h=bb85bb0040108c22063ef82d21740d85fbce2db3;hp=0000000000000000000000000000000000000000;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/macos-build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/macos-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/solaris-build.yml;fp=.github/workflows/solaris-build.yml;h=557a5781e0e289a57547fff2076e4fe78fe2acfa;hp=7de3d35ef0fd8c24f441c8cb7888547954a603d4;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/solaris-build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/solaris-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/ubuntu-build.yml;fp=.github/workflows/ubuntu-build.yml;h=60dc8d5f2d384f3b5735e7d05df8354c25d1b20d;hp=0000000000000000000000000000000000000000;hb=8bc363cc9fcc57a352135e244497469ce9b2c4f8;hpb=a9a315575631015dbee5eb74a986bf0c784830b4" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/ubuntu-build.yml;h=8bc363cc9fcc57a352135e244497469ce9b2c4f8" title="history">H</a>] .github/workflows/ubuntu-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Work around pkg install issue.</title>
+<updated>2024-04-10T19:39:53Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T19:39:53Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=a9a315575631015dbee5eb74a986bf0c784830b4" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=a9a315575631015dbee5eb74a986bf0c784830b4</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Work around pkg install issue.
+
+The xxhash, lz4, and zstd libraries aren&#39;t getting installed on FreeBSD.
+[buildall]
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=2081f6229b930d3f78b5fccc295cfb0e1b770d0d;hp=2c0061ee0255384d64519943c04eb930d4c31f83;hb=a9a315575631015dbee5eb74a986bf0c784830b4;hpb=fcc79836b8f99bb9993b26de3a03cee14daf5ddf" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=a9a315575631015dbee5eb74a986bf0c784830b4" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Get fetch-depth:0 right.</title>
+<updated>2024-04-10T19:30:05Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T19:30:05Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=fcc79836b8f99bb9993b26de3a03cee14daf5ddf" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=fcc79836b8f99bb9993b26de3a03cee14daf5ddf</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Get fetch-depth:0 right.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/build.yml;fp=.github/workflows/build.yml;h=f407dab7b273aa4052dfad6bd8e9257a9e11d646;hp=09a8ce247964f6693c9445e5415749f4db2bd8d2;hb=fcc79836b8f99bb9993b26de3a03cee14daf5ddf;hpb=804411b7fd006d6a399a2b917b508259a752cfed" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/build.yml;h=fcc79836b8f99bb9993b26de3a03cee14daf5ddf" title="history">H</a>] .github/workflows/build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=2c0061ee0255384d64519943c04eb930d4c31f83;hp=0fb5adb09fd3007f30d911e2f85d64e725960793;hb=fcc79836b8f99bb9993b26de3a03cee14daf5ddf;hpb=804411b7fd006d6a399a2b917b508259a752cfed" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=fcc79836b8f99bb9993b26de3a03cee14daf5ddf" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/solaris-build.yml;fp=.github/workflows/solaris-build.yml;h=7de3d35ef0fd8c24f441c8cb7888547954a603d4;hp=feb4ad0b2d05b7a3498f8b1497ca7448ecbd1e23;hb=fcc79836b8f99bb9993b26de3a03cee14daf5ddf;hpb=804411b7fd006d6a399a2b917b508259a752cfed" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/solaris-build.yml;h=fcc79836b8f99bb9993b26de3a03cee14daf5ddf" title="history">H</a>] .github/workflows/solaris-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Get rid of gensend target &amp; cached git version.</title>
+<updated>2024-04-10T19:15:49Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T19:15:49Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=804411b7fd006d6a399a2b917b508259a752cfed" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=804411b7fd006d6a399a2b917b508259a752cfed</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Get rid of gensend target &amp; cached git version.
+
+- Change the developer flow to not require updating the git-version repo
+  that the builds used to download a git-version.h file. The Actions now
+  do a full repo fetch so that the .h file can be generated via the git
+  history.
+- Get rid of the gensend Makefile target that was used for the above.
+- Get rid of the pre-push git hook file that called &quot;Make gensend&quot;.
+- Change the FreeBSD build to save an artifact with its built binaries.
+
+[buildall]
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/build.yml;fp=.github/workflows/build.yml;h=09a8ce247964f6693c9445e5415749f4db2bd8d2;hp=9273e11a96718887a75df762bb51673e42475fb2;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/build.yml;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] .github/workflows/build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=0fb5adb09fd3007f30d911e2f85d64e725960793;hp=747bc35b27eb7e745927a42d22da0fa2b34d9125;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/solaris-build.yml;fp=.github/workflows/solaris-build.yml;h=feb4ad0b2d05b7a3498f8b1497ca7448ecbd1e23;hp=4ef3b2cf65f29ea850ccc42676009a2c7eefe35f;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/solaris-build.yml;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] .github/workflows/solaris-build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=Makefile.in;fp=Makefile.in;h=d5fefe0456b25b2563247cf393263feebb9bc50c;hp=6bf304d1bb648ea777a77da06816caea97b71e11;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=Makefile.in;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] Makefile.in</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=packaging/auto-Makefile;fp=packaging/auto-Makefile;h=032913d571e91b0a17dff743d5015974b675bee5;hp=7f2e2585c674d3ebb8f78c7a9fdfa7a0dae6610f;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=packaging/auto-Makefile;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] packaging/auto-Makefile</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=packaging/pkglib.py;fp=packaging/pkglib.py;h=c2b2930748b75ecbfa77bc29fb00cb3c9f81f03c;hp=c4c5741df1d690115bc342e3e0088075b2ffb7bc;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=packaging/pkglib.py;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] packaging/pkglib.py</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=packaging/pre-push;fp=packaging/pre-push;h=0000000000000000000000000000000000000000;hp=8a713695ef2a3ab96926809b53ca6c32c9861965;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=packaging/pre-push;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] packaging/pre-push</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=packaging/release-rsync;fp=packaging/release-rsync;h=03d9f6a3ec4ecdf510ded45eac4179a3ecae30dc;hp=511e90f1ed3fc0ce98057c44986a50f1cc28e666;hb=804411b7fd006d6a399a2b917b508259a752cfed;hpb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=packaging/release-rsync;h=804411b7fd006d6a399a2b917b508259a752cfed" title="history">H</a>] packaging/release-rsync</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Get the &quot;dev&quot; suffix right.</title>
+<updated>2024-04-10T18:53:07Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T18:53:07Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Get the &quot;dev&quot; suffix right.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=version.h;fp=version.h;h=c6515f6893f685513b07cbcefe10cf5c96b65b6d;hp=47d5dbe19ad9cba21bfd0ec9b6f8bf064b11262c;hb=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082;hpb=50bdf9685dc823ef9930c6ca862ac1588f815970" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=version.h;h=0b1b2a3ff4b01b7ad6be5defe49172f04a0f7082" title="history">H</a>] version.h</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Remove duplicate paragraph.</title>
+<updated>2024-04-10T18:51:59Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-10T18:51:59Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=50bdf9685dc823ef9930c6ca862ac1588f815970" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=50bdf9685dc823ef9930c6ca862ac1588f815970</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Remove duplicate paragraph.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=README.md;fp=README.md;h=82db21575fd8f2ded047d50621bd5f0fc9602419;hp=6bedf2e13e1d568f08491bba8df703cdca6211d0;hb=50bdf9685dc823ef9930c6ca862ac1588f815970;hpb=3f2a38b01184cae9a931280b534acf5a3dae2e94" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=README.md;h=50bdf9685dc823ef9930c6ca862ac1588f815970" title="history">H</a>] README.md</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">CI: added Solaris build</title>
+<updated>2024-04-08T08:40:02Z</updated>
+<author>
+  <name>Charalampos Mitrodimas</name>
+  <email>charmitro@posteo.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-08T08:40:02Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=3f2a38b01184cae9a931280b534acf5a3dae2e94" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=3f2a38b01184cae9a931280b534acf5a3dae2e94</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+CI: added Solaris build
+
+Signed-off-by: Charalampos Mitrodimas &lt;charmitro@posteo.net&gt;
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/solaris-build.yml;fp=.github/workflows/solaris-build.yml;h=4ef3b2cf65f29ea850ccc42676009a2c7eefe35f;hp=0000000000000000000000000000000000000000;hb=3f2a38b01184cae9a931280b534acf5a3dae2e94;hpb=5510255f120ba13a1874086a1ef7ea8a7bf66570" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/solaris-build.yml;h=3f2a38b01184cae9a931280b534acf5a3dae2e94" title="history">H</a>] .github/workflows/solaris-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Tweak maintainer messaging.</title>
+<updated>2024-04-08T20:16:12Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-08T20:16:12Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=5510255f120ba13a1874086a1ef7ea8a7bf66570" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=5510255f120ba13a1874086a1ef7ea8a7bf66570</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Tweak maintainer messaging.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=README.md;fp=README.md;h=6bedf2e13e1d568f08491bba8df703cdca6211d0;hp=f9689972f7285191a1ff5b43701f1081d0078ad6;hb=5510255f120ba13a1874086a1ef7ea8a7bf66570;hpb=56a039b04a186678e8e150a95529f23d93e2ca56" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=README.md;h=5510255f120ba13a1874086a1ef7ea8a7bf66570" title="history">H</a>] README.md</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=rsync.1.md;fp=rsync.1.md;h=4407a013f777bc4fd80d6d3467410e20e6332337;hp=afaf1de89768c581c553b430b5388d6955a3586c;hb=5510255f120ba13a1874086a1ef7ea8a7bf66570;hpb=56a039b04a186678e8e150a95529f23d93e2ca56" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=rsync.1.md;h=5510255f120ba13a1874086a1ef7ea8a7bf66570" title="history">H</a>] rsync.1.md</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=rsyncd.conf.5.md;fp=rsyncd.conf.5.md;h=2f257659db7a6ab4599fde25a6775e05bd9ea76b;hp=2ba71111ec11266629bf2dc8e54ab1818b7f7e33;hb=5510255f120ba13a1874086a1ef7ea8a7bf66570;hpb=56a039b04a186678e8e150a95529f23d93e2ca56" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=rsyncd.conf.5.md;h=5510255f120ba13a1874086a1ef7ea8a7bf66570" title="history">H</a>] rsyncd.conf.5.md</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Changes for 3.3.1dev.</title>
+<updated>2024-04-08T20:14:59Z</updated>
+<author>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</author>
+<contributor>
+  <name>Wayne Davison</name>
+  <email>wayne@opencoder.net</email>
+</contributor>
+<published>2024-04-08T20:14:59Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=56a039b04a186678e8e150a95529f23d93e2ca56" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=56a039b04a186678e8e150a95529f23d93e2ca56</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Changes for 3.3.1dev.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=NEWS.md;fp=NEWS.md;h=1a88a70d948464024e5f06b160012151213896b7;hp=846ed0ac5c3869164f98c46b06b9759a8a596f3a;hb=56a039b04a186678e8e150a95529f23d93e2ca56;hpb=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=NEWS.md;h=56a039b04a186678e8e150a95529f23d93e2ca56" title="history">H</a>] NEWS.md</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=version.h;fp=version.h;h=47d5dbe19ad9cba21bfd0ec9b6f8bf064b11262c;hp=b162146ef98b99bc25281235d371a704b12e409a;hb=56a039b04a186678e8e150a95529f23d93e2ca56;hpb=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=version.h;h=56a039b04a186678e8e150a95529f23d93e2ca56" title="history">H</a>] version.h</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">CI: fixed rules for when to trigger</title>
+<updated>2024-04-08T05:35:42Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-08T05:35:42Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+CI: fixed rules for when to trigger
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/build.yml;fp=.github/workflows/build.yml;h=9273e11a96718887a75df762bb51673e42475fb2;hp=3439e181e3f70d07a1bac853b8feef61a029d2b5;hb=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad;hpb=411c4789dfb2561d3400a5f8282f5f1bab76eeae" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/build.yml;h=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad" title="history">H</a>] .github/workflows/build.yml</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=747bc35b27eb7e745927a42d22da0fa2b34d9125;hp=8ec2e0f152716fb269017115a05eb6564f00446a;hb=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad;hpb=411c4789dfb2561d3400a5f8282f5f1bab76eeae" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=7bc3be2b9e32cf95ce9d67c6227a8e5367d0b8ad" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">support: added install_deps_ubuntu.sh</title>
+<updated>2024-04-08T00:16:31Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-08T00:16:31Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=411c4789dfb2561d3400a5f8282f5f1bab76eeae" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=411c4789dfb2561d3400a5f8282f5f1bab76eeae</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+support: added install_deps_ubuntu.sh
+
+convenient way to bootstrap quickly
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=INSTALL.md;fp=INSTALL.md;h=8ef574a543cd62da8b2c699e1c08caf8824cb68f;hp=1605ab435e00f83329e7a52b714a38fdb3396105;hb=411c4789dfb2561d3400a5f8282f5f1bab76eeae;hpb=231b239f304fb2daa1240eec567880d225b7f730" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=INSTALL.md;h=411c4789dfb2561d3400a5f8282f5f1bab76eeae" title="history">H</a>] INSTALL.md</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=support/install_deps_ubuntu.sh;fp=support/install_deps_ubuntu.sh;h=ac49055bb3eb99a2c489adb03055548d2dee9fa7;hp=0000000000000000000000000000000000000000;hb=411c4789dfb2561d3400a5f8282f5f1bab76eeae;hpb=231b239f304fb2daa1240eec567880d225b7f730" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=support/install_deps_ubuntu.sh;h=411c4789dfb2561d3400a5f8282f5f1bab76eeae" title="history">H</a>] support/install_deps_ubuntu.sh</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">check for stpcpy</title>
+<updated>2024-04-08T03:40:58Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-08T03:40:58Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=231b239f304fb2daa1240eec567880d225b7f730" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=231b239f304fb2daa1240eec567880d225b7f730</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+check for stpcpy
+
+needed for popt on macos
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=configure.ac;fp=configure.ac;h=390c5961cffea5823653a0a0597f822e2f229f00;hp=a65cde14786ebd98fbfa05aace7b7cb0682f0795;hb=231b239f304fb2daa1240eec567880d225b7f730;hpb=4c8683c8753f2493ef13c3425fb5847960a6e305" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=configure.ac;h=231b239f304fb2daa1240eec567880d225b7f730" title="history">H</a>] configure.ac</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">update to popt 1.19</title>
+<updated>2024-04-08T02:45:59Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-08T02:45:59Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=4c8683c8753f2493ef13c3425fb5847960a6e305" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=4c8683c8753f2493ef13c3425fb5847960a6e305</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+update to popt 1.19
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=Makefile.in;fp=Makefile.in;h=6bf304d1bb648ea777a77da06816caea97b71e11;hp=a1253e5d5f2da51adad1d6ddb60477464aa49196;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=Makefile.in;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] Makefile.in</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=configure.ac;fp=configure.ac;h=a65cde14786ebd98fbfa05aace7b7cb0682f0795;hp=57ee32f3485fbcda93e639532f33ee1b51585f69;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=configure.ac;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] configure.ac</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/lookup3.c;fp=popt/lookup3.c;h=e974cad87159f9d9dba69664109f07618487335a;hp=0000000000000000000000000000000000000000;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/lookup3.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/lookup3.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/popt.c;fp=popt/popt.c;h=f3f26a3da1cdd0478edec96910e6c6aa0986f6a3;hp=5d927f782dcbad36085db6f607a24509b5e09db9;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/popt.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/popt.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/popt.h;fp=popt/popt.h;h=bd1606110f169ccd889bd4920cc7a8eb94fdff29;hp=8d85f731294f502115e8d553167dc9531a2a11dd;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/popt.h;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/popt.h</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/poptconfig.c;fp=popt/poptconfig.c;h=bf201e26fdb615b6b7b2e8718c07ac3494cf4e71;hp=9733d152916a67080f6a4026591bccd9d50f1683;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/poptconfig.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/poptconfig.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/popthelp.c;fp=popt/popthelp.c;h=6738f6addaa4809a30c1ddc6e23adb66cecb9358;hp=6a009766de3ba5b09066955062fc2f57f7c4b3b5;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/popthelp.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/popthelp.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/poptint.c;fp=popt/poptint.c;h=b8dc90f42c296ce94f1af8674e66aa7505f021a5;hp=0000000000000000000000000000000000000000;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/poptint.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/poptint.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/poptint.h;fp=popt/poptint.h;h=001c5c35d66a7aefc486ed11bb28bbf12fd1aecb;hp=bec7c976943208aaa6cabdad0d2e9ff72a534859;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/poptint.h;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/poptint.h</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/poptparse.c;fp=popt/poptparse.c;h=5afc6c551f83ca4f2675435bf1bc1e0fe9721b96;hp=e003a04a959ed97b0945da269ab0d17c9cb90903;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/poptparse.c;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/poptparse.c</li>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=popt/system.h;fp=popt/system.h;h=f731d206d2573de2e4faeb8efcb91044067f0b71;hp=25c22daeef3b1d889de3cb711ee4698755207234;hb=4c8683c8753f2493ef13c3425fb5847960a6e305;hpb=85c906f96425195f8ba8646fbb37142206399ba0" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=popt/system.h;h=4c8683c8753f2493ef13c3425fb5847960a6e305" title="history">H</a>] popt/system.h</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">Silence unused var warning</title>
+<updated>2023-05-03T13:50:31Z</updated>
+<author>
+  <name>Rose</name>
+  <email>83477269+AtariDreams@users.noreply.github.com</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2023-05-03T13:50:31Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=85c906f96425195f8ba8646fbb37142206399ba0" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=85c906f96425195f8ba8646fbb37142206399ba0</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+Silence unused var warning
+
+recv_ida_entries still needs to be called regardless, so we cannot take that out. Let&#39;s just quiet the compiler instead.
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=acls.c;fp=acls.c;h=a2b0ff3ec683aa29de5fbad96f83eb2e2d9fd7c8;hp=3cf12eeb07c42238b81236850618bd8c2b1b23ba;hb=85c906f96425195f8ba8646fbb37142206399ba0;hpb=35f5a21a16ca2689710e0503464bb736d136edd6" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=acls.c;h=85c906f96425195f8ba8646fbb37142206399ba0" title="history">H</a>] acls.c</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">hint that a proxy can handle plain and ssl stream at the same time</title>
+<updated>2023-04-05T11:08:02Z</updated>
+<author>
+  <name>Christian Hesse</name>
+  <email>mail@eworm.de</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2023-04-05T11:08:02Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=35f5a21a16ca2689710e0503464bb736d136edd6" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=35f5a21a16ca2689710e0503464bb736d136edd6</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+hint that a proxy can handle plain and ssl stream at the same time
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=rsyncd.conf.5.md;fp=rsyncd.conf.5.md;h=2ba71111ec11266629bf2dc8e54ab1818b7f7e33;hp=ec976bacc5f74db0ce5a24a44c4e7932b6a9e52d;hb=35f5a21a16ca2689710e0503464bb736d136edd6;hpb=99673f937f36ab90a160a1b8c1e37645893d7b77" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=rsyncd.conf.5.md;h=35f5a21a16ca2689710e0503464bb736d136edd6" title="history">H</a>] rsyncd.conf.5.md</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">CI: added FreeBSD build</title>
+<updated>2024-04-06T21:11:31Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-06T21:11:31Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=99673f937f36ab90a160a1b8c1e37645893d7b77" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=99673f937f36ab90a160a1b8c1e37645893d7b77</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+CI: added FreeBSD build
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.github/workflows/freebsd-build.yml;fp=.github/workflows/freebsd-build.yml;h=8ec2e0f152716fb269017115a05eb6564f00446a;hp=0000000000000000000000000000000000000000;hb=99673f937f36ab90a160a1b8c1e37645893d7b77;hpb=9505ac59455278b54708b7c2790d93eb3d0b960b" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.github/workflows/freebsd-build.yml;h=99673f937f36ab90a160a1b8c1e37645893d7b77" title="history">H</a>] .github/workflows/freebsd-build.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+<entry>
+<title type="html">removed old cirrus CI</title>
+<updated>2024-04-06T21:11:47Z</updated>
+<author>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</author>
+<contributor>
+  <name>Andrew Tridgell</name>
+  <email>andrew@tridgell.net</email>
+</contributor>
+<published>2024-04-06T21:11:47Z</published>
+<link rel="alternate" type="text/html" href="http://git.samba.org/?p=rsync.git;a=commitdiff;h=9505ac59455278b54708b7c2790d93eb3d0b960b" />
+<id>http://git.samba.org/?p=rsync.git;a=commitdiff;h=9505ac59455278b54708b7c2790d93eb3d0b960b</id>
+<content type="xhtml" xml:base="http://git.samba.org/">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<pre>
+removed old cirrus CI
+</pre><ul>
+<li>[<a href="http://git.samba.org/?p=rsync.git;a=blobdiff;f=.cirrus.yml;fp=.cirrus.yml;h=0000000000000000000000000000000000000000;hp=33e2685eb7d73164943ec2949b8a571f884c86c1;hb=9505ac59455278b54708b7c2790d93eb3d0b960b;hpb=0dd25d4752520ed405315f1d2a8454fd507631bb" title="diff">D</a><a href="http://git.samba.org/?p=rsync.git;a=history;f=.cirrus.yml;h=9505ac59455278b54708b7c2790d93eb3d0b960b" title="history">H</a>] .cirrus.yml</li>
+</ul>
+</div>
+</content>
+</entry>
+</feed>
